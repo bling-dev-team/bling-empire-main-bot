@@ -33,7 +33,6 @@ const channelIdsToGiveAccess = [
 
   // Channels
   '1467981074125553965',
-  '1504215759683977298',
   '1504215883227332769',
   '1504216163259912213',
   '1504216237327126608',
@@ -131,7 +130,7 @@ While it's true that the infrastructure and info we provide can guide you to sca
 
 ## __Follow The 6 Steps Below To Onboard:__
 ### 1️⃣ Complete Your Onboarding Form
-[Secondary Form](https://6gt0cl3u8ji.typeform.com/to/PuwtfufM)
+[Secondary Form](https://6gt0cl3u8ji.typeform.com/to/NfeZDBpK)
 ### 2️⃣ Access the Video Modules
 [Video Modules](https://your-video-modules-link.com)
 ### 3️⃣ Subscribe to the Group Call
