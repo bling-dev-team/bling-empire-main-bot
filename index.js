@@ -128,18 +128,16 @@ Now it's on you to show up and do the work. 💪
 Let's build 💎
 
 ## __Links for the Onboarding Steps:__
-### 1️⃣ Secondary Form
+### 1️⃣ Complete Your Onboarding Form
 [Secondary Form](https://6gt0cl3u8ji.typeform.com/to/NfeZDBpK)
-### 2️⃣ Skool
-[Skool](https://www.skool.com/bling-empire-consulting-5896/about?ref=697423a6d62d4269b28f16b10909225f)
-### 3️⃣ Group Calls
+### 2️⃣ Request access to Skool Video Modules
+[Skool Video Modules](https://www.skool.com/bling-empire-consulting-5896/about?ref=697423a6d62d4269b28f16b10909225f)
+### 3️⃣ Subscribe to the Group Call
 [Bling Empire Group Calls](https://docs.google.com/document/d/1tEcUfFURxgV7yKIIHbmUGkEdCT7u8YjVX3CiYv1SzOc/edit?tab=t.0)
-### 4️⃣ Vision Document
-[Vision Document](https://docs.google.com/document/d/1FXXDqdwKfab_9HRAxqKlnm-YWV09ILRWbhR2Drh-VEE/edit?tab=t.0)
-### 5️⃣ Notion
+### 4️⃣ Notion
 Work in Progress
-### 6️⃣ Onboarding Call
-[Onboarding Call](https://calendly.com/scotthoho/bling-empire-onboarding-call)
+### 5️⃣ Watch the Onboading Video
+[Onboading Video](https://loom.com)
 `,
     flags: MessageFlags.SuppressEmbeds
   });
