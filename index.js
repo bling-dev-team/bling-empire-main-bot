@@ -128,7 +128,7 @@ Let's build 💎
 ### 2️⃣ Skool
 [Skool](https://www.skool.com/bling-empire-consulting-5896/about?ref=697423a6d62d4269b28f16b10909225f)
 ### 3️⃣ Group Calls
-Bling Empire Group Calls
+[Bling Empire Group Calls](https://docs.google.com/document/d/1tEcUfFURxgV7yKIIHbmUGkEdCT7u8YjVX3CiYv1SzOc/edit?tab=t.0)
 ### 4️⃣ Vision Document
 [Vision Document](https://docs.google.com/document/d/1FXXDqdwKfab_9HRAxqKlnm-YWV09ILRWbhR2Drh-VEE/edit?tab=t.0)
 ### 5️⃣ Notion
