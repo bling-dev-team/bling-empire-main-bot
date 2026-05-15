@@ -29,9 +29,11 @@ const channelIdsToGiveAccess = [
   '1467981074125553964',
   '1504215276462276719',
   '1504215383102718042',
+  '1504867328746324060',
 
   // Channels
 '1467981074125553965',
+'1504866414631325846',
 '1504215883227332769',
 '1504216163259912213',
 '1504216237327126608',
@@ -39,7 +41,11 @@ const channelIdsToGiveAccess = [
 '1504216381539745903',
 '1504215520159994028',
 '1504215614762389765',
-'1504215691912548513'
+'1504215691912548513',
+'1504867410082267346',
+'1504867594564403270',
+'1504867450850902056',
+'1504867662298222854'
   ];
 
   for (const channelId of channelIdsToGiveAccess) {
@@ -126,7 +132,6 @@ The roadmap is here. The community is here. Our team is here.
 Now it's on you to show up and do the work. 💪
 
 Let's build 💎
-
 ## __Links for the Onboarding Steps:__
 ### 1️⃣ Complete Your Onboarding Form
 [Secondary Form](https://6gt0cl3u8ji.typeform.com/to/NfeZDBpK)
