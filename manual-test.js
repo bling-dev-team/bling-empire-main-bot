@@ -16,7 +16,7 @@ client.once('clientReady', async () => {
 
   const guild = client.guilds.cache.first();
 
-  const channel = guild.channels.cache.get('1504512351821369396');
+  const channel = guild.channels.cache.get('1504870257226023054');
 
   if (!channel) {
     console.log('❌ Channel not found');

@@ -24,28 +24,28 @@ client.once('clientReady', () => {
 client.on('guildMemberAdd', async (member) => {
   const guild = member.guild;
 
-const channelIdsToGiveAccess = [
+  const channelIdsToGiveAccess = [
     // Categories
-  '1467981074125553964',
-  '1504215276462276719',
-  '1504215383102718042',
-  '1504867328746324060',
+    '1467981074125553964',
+    '1504215276462276719',
+    '1504215383102718042',
+    '1504867328746324060',
 
-  // Channels
-'1467981074125553965',
-'1504866414631325846',
-'1504215883227332769',
-'1504216163259912213',
-'1504216237327126608',
-'1504216311755051110',
-'1504216381539745903',
-'1504215520159994028',
-'1504215614762389765',
-'1504215691912548513',
-'1504867410082267346',
-'1504867594564403270',
-'1504867450850902056',
-'1504867662298222854'
+    // Shared Channels only — NO scalers-chat here
+    '1467981074125553965',
+    '1504866414631325846',
+    '1504215883227332769',
+    '1504216163259912213',
+    '1504216237327126608',
+    '1504216311755051110',
+    '1504216381539745903',
+    '1504215520159994028',
+    '1504215614762389765',
+    '1504215691912548513',
+    '1504867410082267346',
+    '1504867594564403270',
+    '1504867450850902056',
+    '1504867662298222854'
   ];
 
   for (const channelId of channelIdsToGiveAccess) {
@@ -73,9 +73,19 @@ const channelIdsToGiveAccess = [
 
   const channelName = `🤵‍♂️┃${cleanName}`;
 
+  const existingPrivateChannel = guild.channels.cache.find(
+    channel => channel.name === channelName
+  );
+
+  if (existingPrivateChannel) {
+    console.log(`⚠️ Channel already exists: ${channelName}`);
+    return;
+  }
+
   const allowedRoleNames = [
     'Admin',
     'CEO',
+    'Bling Team',
     'Sales Coach',
     'CSM',
     'Ads Coach'
@@ -140,7 +150,7 @@ Let's build 💎
 ### 3️⃣ Subscribe to the Group Call
 [Bling Empire Group Calls](https://docs.google.com/document/d/1tEcUfFURxgV7yKIIHbmUGkEdCT7u8YjVX3CiYv1SzOc/edit?tab=t.0)
 ### 4️⃣ Notion
-Work in Progress
+Wait for our EA to give you access to your notion portal
 ### 5️⃣ Watch the Onboading Video
 [Onboading Video](https://loom.com)
 `,

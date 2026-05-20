@@ -28,8 +28,7 @@ client.once('clientReady', async () => {
     return (
       channel.type === ChannelType.GuildText &&
       (
-        name.includes('test-client-') ||
-        name.includes('outside-test-')
+        name.includes('test')
       )
     );
   });
