@@ -85,10 +85,7 @@ client.on('guildMemberAdd', async (member) => {
   const allowedRoleNames = [
     'Admin',
     'CEO',
-    'Bling Team',
-    'Sales Coach',
-    'CSM',
-    'Ads Coach'
+    'Bling Team'
   ];
 
   const permissionOverwrites = [
@@ -151,8 +148,8 @@ Let's build 💎
 [Bling Empire Group Calls](https://docs.google.com/document/d/1tEcUfFURxgV7yKIIHbmUGkEdCT7u8YjVX3CiYv1SzOc/edit?tab=t.0)
 ### 4️⃣ Notion
 Wait for our EA to give you access to your notion portal
-### 5️⃣ Watch the Onboading Video
-[Onboading Video](https://loom.com)
+### 5️⃣ Watch the Onboarding Video
+[Onboarding Video](https://loom.com)
 `,
     flags: MessageFlags.SuppressEmbeds
   });
