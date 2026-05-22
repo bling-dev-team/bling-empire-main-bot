@@ -16,7 +16,7 @@ client.once('clientReady', async () => {
 
   const guild = client.guilds.cache.first();
 
-  const channel = guild.channels.cache.get('1505914578964320256');
+  const channel = guild.channels.cache.get('1507206311111295047');
 
   if (!channel) {
     console.log('❌ Channel not found');
@@ -41,7 +41,7 @@ If you have any questions, let us know in the chat. Let’s build!
 ### 3️⃣ Subscribe to the Group Call
 [Bling Empire Group Calls](https://docs.google.com/document/d/1tEcUfFURxgV7yKIIHbmUGkEdCT7u8YjVX3CiYv1SzOc/edit?tab=t.0)
 ### 4️⃣ Notion
-Work in Progress
+Our EA will send over your client portal once it’s ready.
 ### 5️⃣ Watch the Onboarding Video
 [Onboarding Video](https://tinyurl.com/bling-empire-onboarding)
 `,
