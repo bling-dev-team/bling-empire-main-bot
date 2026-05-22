@@ -16,7 +16,7 @@ client.once('clientReady', async () => {
 
   const guild = client.guilds.cache.first();
 
-  const channel = guild.channels.cache.get('1504870257226023054');
+  const channel = guild.channels.cache.get('1505914578964320256');
 
   if (!channel) {
     console.log('❌ Channel not found');
@@ -27,15 +27,12 @@ client.once('clientReady', async () => {
     content: `
 # Welcome to Bling Empire Mastermind 🙌
 
-You just made one of the best decisions for your business and I don't say that lightly.
+Super excited to help you grow the business.
 
-This program has one mission: help you build your brand, grow your audience and turn your passion into a sustainable business.
+Before we get into it, there’s a couple more steps to make sure you’re completely onboarded ✅
 
-The roadmap is here. The community is here. Our team is here.
+If you have any questions, let us know in the chat. Let’s build!
 
-Now it's on you to show up and do the work. 💪
-
-Let's build 💎
 ## __Links for the Onboarding Steps:__
 ### 1️⃣ Complete Your Onboarding Form
 [Secondary Form](https://6gt0cl3u8ji.typeform.com/to/NfeZDBpK)
@@ -45,8 +42,8 @@ Let's build 💎
 [Bling Empire Group Calls](https://docs.google.com/document/d/1tEcUfFURxgV7yKIIHbmUGkEdCT7u8YjVX3CiYv1SzOc/edit?tab=t.0)
 ### 4️⃣ Notion
 Work in Progress
-### 5️⃣ Watch the Onboading Video
-[Onboading Video](https://loom.com)
+### 5️⃣ Watch the Onboarding Video
+[Onboarding Video](https://tinyurl.com/bling-empire-onboarding)
 `,
     flags: MessageFlags.SuppressEmbeds
   });
