@@ -24,6 +24,8 @@ client.once('clientReady', () => {
 client.on('guildMemberAdd', async (member) => {
   const guild = member.guild;
 
+  const opsAlertChannelId = '1507404547885371474';
+
   const channelIdsToGiveAccess = [
     // Categories
     '1467981074125553964',
@@ -146,12 +148,30 @@ If you have any questions, let us know in the chat. Let’s build!
 ### 3️⃣ Subscribe to the Group Call
 [Bling Empire Group Calls](https://docs.google.com/document/d/1tEcUfFURxgV7yKIIHbmUGkEdCT7u8YjVX3CiYv1SzOc/edit?tab=t.0)
 ### 4️⃣ Notion
-Our EA will send over your client portal once it’s ready.
+Wait for our EA to give you access to your notion portal
 ### 5️⃣ Watch the Onboarding Video
 [Onboarding Video](https://tinyurl.com/bling-empire-onboarding)
 `,
     flags: MessageFlags.SuppressEmbeds
   });
+
+  const opsAlertChannel = guild.channels.cache.get(opsAlertChannelId);
+
+  if (opsAlertChannel) {
+    await opsAlertChannel.send({
+      content: `
+🚨 **New Client Channel Created**
+
+👤 **Client:** ${member.displayName}
+📁 **Channel:** ${channel}
+
+✅ Onboarding channel is now ready.
+`,
+      flags: MessageFlags.SuppressEmbeds
+    });
+  } else {
+    console.log(`⚠️ Ops alert channel not found by ID: ${opsAlertChannelId}`);
+  }
 });
 
 client.login(process.env.DISCORD_TOKEN);
