@@ -8,6 +8,8 @@ const {
   MessageFlags
 } = require('discord.js');
 
+const processingMembers = new Set();
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -22,116 +24,124 @@ client.once('clientReady', () => {
 });
 
 client.on('guildMemberAdd', async (member) => {
-  const guild = member.guild;
-
-  const opsAlertChannelId = '1507404547885371474';
-
-  const channelIdsToGiveAccess = [
-    // Categories
-    '1467981074125553964',
-    '1504215276462276719',
-    '1504215383102718042',
-    '1504867328746324060',
-
-    // Shared Channels only — NO scalers-chat here
-    '1467981074125553965',
-    '1504866414631325846',
-    '1504215883227332769',
-    '1504216163259912213',
-    '1504216237327126608',
-    '1504216311755051110',
-    '1504216381539745903',
-    '1504215520159994028',
-    '1504215614762389765',
-    '1504215691912548513',
-    '1504867410082267346',
-    '1504867594564403270',
-    '1504867450850902056',
-    '1504867662298222854'
-  ];
-
-  for (const channelId of channelIdsToGiveAccess) {
-    const existingChannel = guild.channels.cache.get(channelId);
-
-    if (existingChannel) {
-      await existingChannel.permissionOverwrites.edit(member.id, {
-        ViewChannel: true,
-        SendMessages: true,
-        ReadMessageHistory: true
-      });
-
-      console.log(`✅ Gave access to ${member.displayName} for ${existingChannel.name}`);
-    } else {
-      console.log(`⚠️ Channel not found by ID: ${channelId}`);
-    }
-  }
-
-  const cleanName = member.displayName
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-    .substring(0, 30);
-
-  const channelName = `🤵‍♂️┃${cleanName}`;
-
-  const existingPrivateChannel = guild.channels.cache.find(
-    channel => channel.name === channelName
-  );
-
-  if (existingPrivateChannel) {
-    console.log(`⚠️ Channel already exists: ${channelName}`);
+  if (processingMembers.has(member.id)) {
+    console.log(`⚠️ Already processing ${member.displayName}`);
     return;
   }
 
-  const allowedRoleNames = [
-    'Admin',
-    'CEO',
-    'Zapier',
-    'BLING EMPIRE MASTERMIND',
-    'Bling Team'
-  ];
+  processingMembers.add(member.id);
 
-  const permissionOverwrites = [
-    {
-      id: guild.id,
-      deny: [PermissionsBitField.Flags.ViewChannel]
-    },
-    {
-      id: member.id,
-      allow: [
-        PermissionsBitField.Flags.ViewChannel,
-        PermissionsBitField.Flags.SendMessages,
-        PermissionsBitField.Flags.ReadMessageHistory
-      ]
+  try {
+    const guild = member.guild;
+
+    const opsAlertChannelId = '1507404547885371474';
+
+    const channelIdsToGiveAccess = [
+      // Categories
+      '1467981074125553964',
+      '1504215276462276719',
+      '1504215383102718042',
+      '1504867328746324060',
+
+      // Shared Channels only — NO scalers-chat here
+      '1467981074125553965',
+      '1504866414631325846',
+      '1504215883227332769',
+      '1504216163259912213',
+      '1504216237327126608',
+      '1504216311755051110',
+      '1504216381539745903',
+      '1504215520159994028',
+      '1504215614762389765',
+      '1504215691912548513',
+      '1504867410082267346',
+      '1504867594564403270',
+      '1504867450850902056',
+      '1504867662298222854'
+    ];
+
+    for (const channelId of channelIdsToGiveAccess) {
+      const existingChannel = guild.channels.cache.get(channelId);
+
+      if (existingChannel) {
+        await existingChannel.permissionOverwrites.edit(member.id, {
+          ViewChannel: true,
+          SendMessages: true,
+          ReadMessageHistory: true
+        });
+
+        console.log(`✅ Gave access to ${member.displayName} for ${existingChannel.name}`);
+      } else {
+        console.log(`⚠️ Channel not found by ID: ${channelId}`);
+      }
     }
-  ];
 
-  for (const roleName of allowedRoleNames) {
-    const role = guild.roles.cache.find(role => role.name === roleName);
+    const cleanName = member.displayName
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+      .substring(0, 30);
 
-    if (role) {
-      permissionOverwrites.push({
-        id: role.id,
+    const channelName = `🤵‍♂️┃${cleanName}`;
+
+    const existingPrivateChannel = guild.channels.cache.find(
+      channel => channel.name === channelName
+    );
+
+    if (existingPrivateChannel) {
+      console.log(`⚠️ Channel already exists: ${channelName}`);
+      return;
+    }
+
+    const allowedRoleNames = [
+      'Admin',
+      'CEO',
+      'Zapier',
+      'BLING EMPIRE MASTERMIND',
+      'Bling Team'
+    ];
+
+    const permissionOverwrites = [
+      {
+        id: guild.id,
+        deny: [PermissionsBitField.Flags.ViewChannel]
+      },
+      {
+        id: member.id,
         allow: [
           PermissionsBitField.Flags.ViewChannel,
           PermissionsBitField.Flags.SendMessages,
           PermissionsBitField.Flags.ReadMessageHistory
         ]
-      });
-    } else {
-      console.log(`⚠️ Role not found: ${roleName}`);
+      }
+    ];
+
+    for (const roleName of allowedRoleNames) {
+      const role = guild.roles.cache.find(role => role.name === roleName);
+
+      if (role) {
+        permissionOverwrites.push({
+          id: role.id,
+          allow: [
+            PermissionsBitField.Flags.ViewChannel,
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.ReadMessageHistory
+          ]
+        });
+      } else {
+        console.log(`⚠️ Role not found: ${roleName}`);
+      }
     }
-  }
 
-  const channel = await guild.channels.create({
-    name: channelName,
-    type: ChannelType.GuildText,
-    permissionOverwrites
-  });
+    const channel = await guild.channels.create({
+      name: channelName,
+      type: ChannelType.GuildText,
+      permissionOverwrites
+    });
 
-  await channel.send({
-    content: `
+    await channel.send({
+      content: `
 # Welcome to Bling Empire Mastermind 🙌
 
 Super excited to help you grow the business.
@@ -152,24 +162,29 @@ Wait for our EA to give you access to your notion portal
 ### 5️⃣ Watch the Onboarding Video
 [Onboarding Video](https://tinyurl.com/bling-empire-onboarding)
 `,
-    flags: MessageFlags.SuppressEmbeds
-  });
+      flags: MessageFlags.SuppressEmbeds
+    });
 
-  const opsAlertChannel = guild.channels.cache.get(opsAlertChannelId);
+    const opsAlertChannel = guild.channels.cache.get(opsAlertChannelId);
 
-  if (opsAlertChannel) {
-    await opsAlertChannel.send({
-      content: `
+    if (opsAlertChannel) {
+      await opsAlertChannel.send({
+        content: `
 🚨 **New Client Channel Created**
 
 👤 **Client:** ${member.displayName}
 📁 **Channel:** ${channel}
 📅 **Date Created:** <t:${Math.floor(Date.now() / 1000)}:F>
 `,
-      flags: MessageFlags.SuppressEmbeds
-    });
-  } else {
-    console.log(`⚠️ Ops alert channel not found by ID: ${opsAlertChannelId}`);
+        flags: MessageFlags.SuppressEmbeds
+      });
+    } else {
+      console.log(`⚠️ Ops alert channel not found by ID: ${opsAlertChannelId}`);
+    }
+  } catch (error) {
+    console.error(`❌ Error processing ${member.displayName}:`, error);
+  } finally {
+    processingMembers.delete(member.id);
   }
 });
 
