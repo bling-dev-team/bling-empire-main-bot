@@ -164,8 +164,7 @@ Wait for our EA to give you access to your notion portal
 
 👤 **Client:** ${member.displayName}
 📁 **Channel:** ${channel}
-
-✅ Onboarding channel is now ready.
+📅 **Date Created:** <t:${Math.floor(Date.now() / 1000)}:F>
 `,
       flags: MessageFlags.SuppressEmbeds
     });
