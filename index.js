@@ -182,10 +182,10 @@ Wait for our EA to give you access to your notion portal
       flags: MessageFlags.SuppressEmbeds
     });
 
-    const opsAlertChannel = guild.channels.cache.get(opsAlertChannelId);
+    const alertChannel = guild.channels.cache.get(channelCreationAlertId);
 
-    if (opsAlertChannel) {
-      await opsAlertChannel.send({
+    if (alertChannel) {
+      await alertChannel.send({
         content: `
 🚨 **New Client Channel Created**
 
@@ -196,7 +196,7 @@ Wait for our EA to give you access to your notion portal
         flags: MessageFlags.SuppressEmbeds
       });
     } else {
-      console.log(`⚠️ Ops alert channel not found by ID: ${opsAlertChannelId}`);
+      console.log(`⚠️ Channel creation alert not found by ID: ${channelCreationAlertId}`);
     }
   } catch (error) {
     console.error(`❌ Error processing ${member.displayName}:`, error);
