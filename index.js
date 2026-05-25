@@ -150,7 +150,7 @@ Before we get into it, there’s a couple more steps to make sure you’re compl
 If you have any questions, let us know in the chat. Let’s build!
 
 ## __Links for the Onboarding Steps:__
-### 1️⃣ Complete Your Onboarding Form
+### 1️⃣ Complete the Secondary Form
 [Secondary Form](https://6gt0cl3u8ji.typeform.com/to/NfeZDBpK)
 ### 2️⃣ Request access to Skool Video Modules
 [Skool Video Modules](https://www.skool.com/bling-empire-consulting-5896/about?ref=697423a6d62d4269b28f16b10909225f)
