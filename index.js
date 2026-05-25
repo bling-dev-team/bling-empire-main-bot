@@ -24,6 +24,7 @@ client.once('clientReady', () => {
 });
 
 client.on('guildMemberAdd', async (member) => {
+
   if (processingMembers.has(member.id)) {
     console.log(`⚠️ Already processing ${member.displayName}`);
     return;
@@ -32,9 +33,14 @@ client.on('guildMemberAdd', async (member) => {
   processingMembers.add(member.id);
 
   try {
+
     const guild = member.guild;
 
+    // CHANNEL CREATION ALERT CHANNEL ID
+    const channelCreationAlertId = '1508519056439775352';
+
     const channelIdsToGiveAccess = [
+
       // CATEGORIES
       '1465432980288831600',
       '1504555573419442196',
@@ -42,26 +48,28 @@ client.on('guildMemberAdd', async (member) => {
       '1479277944739205190',
 
       // SHARED CHANNELS
-'1465731071432724713',
-'1504555573419442196',
-'1465725977610162398',
-'1478441202268241950',
-'1503550024393425128',
- '1503531944498040992',
- '1503532302876020940',
-'1479280828541308959',
-'1469104904902541478',
- '1471257496416030925',
-'1503525871120814262',
- '1503525951462440991',
-'1503526079007166565',
- '1503526265406357634'
+      '1465731071432724713',
+      '1504555573419442196',
+      '1465725977610162398',
+      '1478441202268241950',
+      '1503550024393425128',
+      '1503531944498040992',
+      '1503532302876020940',
+      '1479280828541308959',
+      '1469104904902541478',
+      '1471257496416030925',
+      '1503525871120814262',
+      '1503525951462440991',
+      '1503526079007166565',
+      '1503526265406357634'
     ];
 
     for (const channelId of channelIdsToGiveAccess) {
+
       const existingChannel = guild.channels.cache.get(channelId);
 
       if (existingChannel) {
+
         await existingChannel.permissionOverwrites.edit(member.id, {
           ViewChannel: true,
           SendMessages: true,
@@ -69,8 +77,11 @@ client.on('guildMemberAdd', async (member) => {
         });
 
         console.log(`✅ Gave access to ${member.displayName} for ${existingChannel.name}`);
+
       } else {
+
         console.log(`⚠️ Channel not found by ID: ${channelId}`);
+
       }
     }
 
@@ -92,14 +103,14 @@ client.on('guildMemberAdd', async (member) => {
       return;
     }
 
-const allowedRoleNames = [
-  'Admin',
-  'Zapier',
-  'CEO',
-  'Bling Empire Mastermind',
-  'Operator',
-  'Bling Team'
-];
+    const allowedRoleNames = [
+      'Admin',
+      'Zapier',
+      'CEO',
+      'Bling Empire Mastermind',
+      'Operator',
+      'Bling Team'
+    ];
 
     const permissionOverwrites = [
       {
@@ -117,9 +128,11 @@ const allowedRoleNames = [
     ];
 
     for (const roleName of allowedRoleNames) {
+
       const role = guild.roles.cache.find(role => role.name === roleName);
 
       if (role) {
+
         permissionOverwrites.push({
           id: role.id,
           allow: [
@@ -128,8 +141,11 @@ const allowedRoleNames = [
             PermissionsBitField.Flags.ReadMessageHistory
           ]
         });
+
       } else {
+
         console.log(`⚠️ Role not found: ${roleName}`);
+
       }
     }
 
@@ -138,6 +154,8 @@ const allowedRoleNames = [
       type: ChannelType.GuildText,
       permissionOverwrites
     });
+
+    // SEND ONBOARDING MESSAGE
 
     await channel.send({
       content: `
@@ -164,6 +182,22 @@ Wait for our EA to give you access to your notion portal
       flags: MessageFlags.SuppressEmbeds
     });
 
+    const opsAlertChannel = guild.channels.cache.get(opsAlertChannelId);
+
+    if (opsAlertChannel) {
+      await opsAlertChannel.send({
+        content: `
+🚨 **New Client Channel Created**
+
+👤 **Client:** ${member.displayName}
+📁 **Channel:** ${channel}
+📅 **Date Created:** <t:${Math.floor(Date.now() / 1000)}:F>
+`,
+        flags: MessageFlags.SuppressEmbeds
+      });
+    } else {
+      console.log(`⚠️ Ops alert channel not found by ID: ${opsAlertChannelId}`);
+    }
   } catch (error) {
     console.error(`❌ Error processing ${member.displayName}:`, error);
   } finally {
