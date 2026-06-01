@@ -24,7 +24,6 @@ client.once('clientReady', () => {
 });
 
 client.on('guildMemberAdd', async (member) => {
-
   if (processingMembers.has(member.id)) {
     console.log(`⚠️ Already processing ${member.displayName}`);
     return;
@@ -33,21 +32,19 @@ client.on('guildMemberAdd', async (member) => {
   processingMembers.add(member.id);
 
   try {
-
     const guild = member.guild;
 
-    // CHANNEL CREATION ALERT CHANNEL ID
     const channelCreationAlertId = '1508519056439775352';
 
-    const channelIdsToGiveAccess = [
+    // GENERAL CHAT CHANNEL ID
+    const GENERAL_CHANNEL_ID = '1465725977610162398';
 
-      // CATEGORIES
+    const channelIdsToGiveAccess = [
       '1465432980288831600',
       '1504555573419442196',
       '1479277944739205190',
       '1479277944739205190',
 
-      // SHARED CHANNELS
       '1465731071432724713',
       '1504555573419442196',
       '1465725977610162398',
@@ -65,11 +62,9 @@ client.on('guildMemberAdd', async (member) => {
     ];
 
     for (const channelId of channelIdsToGiveAccess) {
-
       const existingChannel = guild.channels.cache.get(channelId);
 
       if (existingChannel) {
-
         await existingChannel.permissionOverwrites.edit(member.id, {
           ViewChannel: true,
           SendMessages: true,
@@ -77,11 +72,8 @@ client.on('guildMemberAdd', async (member) => {
         });
 
         console.log(`✅ Gave access to ${member.displayName} for ${existingChannel.name}`);
-
       } else {
-
         console.log(`⚠️ Channel not found by ID: ${channelId}`);
-
       }
     }
 
@@ -128,11 +120,9 @@ client.on('guildMemberAdd', async (member) => {
     ];
 
     for (const roleName of allowedRoleNames) {
-
       const role = guild.roles.cache.find(role => role.name === roleName);
 
       if (role) {
-
         permissionOverwrites.push({
           id: role.id,
           allow: [
@@ -141,11 +131,8 @@ client.on('guildMemberAdd', async (member) => {
             PermissionsBitField.Flags.ReadMessageHistory
           ]
         });
-
       } else {
-
         console.log(`⚠️ Role not found: ${roleName}`);
-
       }
     }
 
@@ -154,8 +141,6 @@ client.on('guildMemberAdd', async (member) => {
       type: ChannelType.GuildText,
       permissionOverwrites
     });
-
-    // SEND ONBOARDING MESSAGE
 
     await channel.send({
       content: `
@@ -175,9 +160,18 @@ If you have any questions, let us know in the chat. Let’s build!
 ### 3️⃣ Subscribe to the Group Call
 [Bling Empire Group Calls](https://docs.google.com/document/d/1tEcUfFURxgV7yKIIHbmUGkEdCT7u8YjVX3CiYv1SzOc/edit?tab=t.0)
 ### 4️⃣ Notion
-Wait for our EA to give you access to your notion portal
+Wait for our EA to give you access to your notion portal.
 ### 5️⃣ Watch the Onboarding Video
 [Onboarding Video](https://tinyurl.com/bling-empire-onboarding)
+━━━━━━━━━━━━━━━━
+Lastly, please take a moment to introduce yourself in <#${GENERAL_CHANNEL_ID}> so everyone can get to know you 🙌
+Feel free to share your:
+• IG handle
+• Age
+• Location
+• Business niche
+• Goals inside Bling
+• Fun fact outside of business
 `,
       flags: MessageFlags.SuppressEmbeds
     });
