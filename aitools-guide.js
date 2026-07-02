@@ -11,7 +11,7 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds]
 });
 
-const START_HERE_CHANNEL_ID = '1466856670369022129';
+const START_HERE_CHANNEL_ID = '1465731071432724713';
 
 const channels = {
   aiSupport: '1514381014800142407',

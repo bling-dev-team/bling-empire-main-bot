@@ -36,7 +36,6 @@ client.on('guildMemberAdd', async (member) => {
 
     const channelCreationAlertId = '1508519056439775352';
 
-    // GENERAL CHAT CHANNEL ID
     const GENERAL_CHANNEL_ID = '1465725977610162398';
 
     const channelIdsToGiveAccess = [
@@ -75,6 +74,14 @@ client.on('guildMemberAdd', async (member) => {
       } else {
         console.log(`⚠️ Channel not found by ID: ${channelId}`);
       }
+    }
+
+    let programType = 'Unknown';
+
+    if (member.roles.cache.some(role => role.name === 'Client - Scaler')) {
+      programType = 'Scaler';
+    } else if (member.roles.cache.some(role => role.name === 'Client - Starter')) {
+      programType = 'Starter';
     }
 
     const cleanName = member.displayName
@@ -184,6 +191,7 @@ Feel free to share your:
 🚨 **New Client Channel Created**
 
 👤 **Client:** ${member.displayName}
+🎯 **Program:** ${programType}
 📁 **Channel:** ${channel}
 📅 **Date Created:** <t:${Math.floor(Date.now() / 1000)}:F>
 `,
