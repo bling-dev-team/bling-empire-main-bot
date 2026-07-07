@@ -1,5 +1,3 @@
-
-
 require('dotenv').config();
 
 const {
@@ -22,7 +20,7 @@ const client = new Client({
 });
 
 client.once('clientReady', () => {
-  console.log(`Logged in as ${client.user.tag}`);
+  console.log(Logged in as ${client.user.tag});
 });
 
 client.on('guildMemberAdd', async (member) => {
@@ -84,7 +82,7 @@ client.on('guildMemberAdd', async (member) => {
       .replace(/^-|-$/g, '')
       .substring(0, 30);
 
-    const channelName = `🤵‍♂️┃${cleanName}`;
+    const channelName = 🤵‍♂️┃${cleanName};
 
     const existingPrivateChannel = guild.channels.cache.find(
       channel => channel.name === channelName
@@ -148,9 +146,9 @@ Before we dive in, please complete the onboarding steps below to make sure you'r
 
 If you have any questions along the way, don't hesitate to reach out in this channel. We're here to help every step of the way.
 
-Our goal is to help you build a strong foundation first. Once we build your business to the point where you're ready to hire and scale, we'll invite you into the **Scaler Program.** 🚀
+Our goal is to help you build a strong foundation first. Once we build your business to the point where you're ready to hire and scale, we'll invite you into the *Scaler Program.* 🚀
 
-## __Links for the Onboarding Steps:__
+## _Links for the Onboarding Steps:_
 ### 1️⃣ Complete the Secondary Form
 [Secondary Form](https://6gt0cl3u8ji.typeform.com/to/NfeZDBpK)
 ### 2️⃣ Request access to Skool Video Modules
@@ -183,7 +181,7 @@ Before we get started, please complete the onboarding steps below so we can get 
 
 If you need anything throughout the program, simply reach out in this channel. We're excited to help you scale to the next level.
 
-## __Links for the Onboarding Steps:__
+## _Links for the Onboarding Steps:_
 ### 1️⃣ Complete the Secondary Form
 [Secondary Form](https://6gt0cl3u8ji.typeform.com/to/NfeZDBpK)
 ### 2️⃣ Request access to Skool Video Modules
@@ -205,39 +203,39 @@ Feel free to share your:
 • Fun fact outside of business
 `;
 
-    let onboardingMessage;
+let onboardingMessage;
 
-    if (programType === 'Scaler') {
-      onboardingMessage = scalerOnboardingMessage;
-    } else if (programType === 'Starter') {
-      onboardingMessage = starterOnboardingMessage;
-    } else {
-      console.log(`⚠️ ${member.displayName} joined without a valid program role.`);
-      return;
-    }
+if (programType === 'Scaler') {
+  onboardingMessage = scalerOnboardingMessage;
+} else if (programType === 'Starter') {
+  onboardingMessage = starterOnboardingMessage;
+} else {
+  console.log(⚠️ ${member.displayName} joined without a valid program role.);
+  return;
+}
 
-    await channel.send({
-      content: onboardingMessage,
-      flags: MessageFlags.SuppressEmbeds
-    });
+await channel.send({
+  content: onboardingMessage,
+  flags: MessageFlags.SuppressEmbeds
+});
 
     const alertChannel = guild.channels.cache.get(channelCreationAlertId);
 
     if (alertChannel) {
       await alertChannel.send({
         content: `
-🚨 **New Client Channel Created**
+🚨 *New Client Channel Created*
 
-👤 **Client:** ${member.displayName}
-🎯 **Program:** ${programType}
-📁 **Channel:** ${channel}
-📅 **Date Created:** <t:${Math.floor(Date.now() / 1000)}:F>
+👤 *Client:* ${member.displayName}
+🎯 *Program:* ${programType}
+📁 *Channel:* ${channel}
+📅 *Date Created:* <t:${Math.floor(Date.now() / 1000)}:F>
 `,
         flags: MessageFlags.SuppressEmbeds
       });
     }
   } catch (error) {
-    console.error(`❌ Error processing ${member.displayName}:`, error);
+    console.error(❌ Error processing ${member.displayName}:, error);
   } finally {
     processingMembers.delete(member.id);
   }
