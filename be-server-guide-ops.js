@@ -12,7 +12,7 @@ const client = new Client({
 });
 
 // BE MAIN SERVER: Channel containing the existing Server Guide
-const START_HERE_CHANNEL_ID = '1466856670369022129';
+const START_HERE_CHANNEL_ID = '1465731071432724713';
 
 // Existing Server Guide message to update
 const SERVER_GUIDE_MESSAGE_ID = '1511820455562969210';
@@ -71,7 +71,7 @@ client.once('clientReady', async () => {
     );
 
     const existingMessage = await channel.messages.fetch(
-      SERVER_GUIDIDE_MESSAGE_ID
+      SERVER_GUIDE_MESSAGE_ID
     );
 
     if (!existingMessage) {
