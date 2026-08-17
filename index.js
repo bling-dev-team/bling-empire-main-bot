@@ -140,7 +140,7 @@ client.on('guildMemberAdd', async (member) => {
     const starterOnboardingMessage = `
 # Welcome to Bling Empire Mastermind 🙌
 
-We're excited to have you inside the Starter Program!
+We're excited to have you inside the **STARTER PROGRAM!**
 
 This program is designed to help you build the foundations of a successful online coaching business. Throughout your journey, you'll work through the training step by step, receive personalized guidance from our team, and build the systems needed to consistently attract clients and grow your business.
 
@@ -148,7 +148,7 @@ Before we dive in, please complete the onboarding steps below to make sure you'r
 
 If you have any questions along the way, don't hesitate to reach out in this channel. We're here to help every step of the way.
 
-Our goal is to help you build a strong foundation first. Once we build your business to the point where you're ready to hire and scale, we'll invite you into the **Scaler Program.** 🚀
+Our goal is to help you build a strong foundation first. Once we build your business to the point where you're ready to hire and scale, we'll invite you into the Scaler Program.🚀
 
 ## __Links for the Onboarding Steps:__
 ### 1️⃣ Complete the Secondary Form
@@ -175,7 +175,7 @@ Feel free to share your:
     const scalerOnboardingMessage = `
 # Welcome to Bling Empire Mastermind 🙌
 
-Welcome to the Scaler Program!
+Welcome to the **SCALER PROGRAM!**
 
 This program is built for business owners who are ready to optimize, implement, and scale. You'll work closely with our team to strengthen your systems, improve operations, and accelerate your business growth through advanced coaching and implementation.
 
